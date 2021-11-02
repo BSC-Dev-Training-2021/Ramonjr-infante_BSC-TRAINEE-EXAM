@@ -302,12 +302,13 @@ body{
       padding:20px;
   }
 .div_profile{
-    width:49%;
-    float:left;
+    width:100%;
+    overflow:hidden;
+    padding-bottom:20px;
 }
-.div_resident{
-    width:49%;
-    float:right;
+.div_profile h1{
+    text-align:center;
+    letter-spacing:3px;
 }
 .div_profile img{
     width:100px;
@@ -323,10 +324,11 @@ body{
     padding:10px;
 }
 .user_info_holder{
-    width: 90%;
-    margin:0 auto;
+    width: 47%;
+    float:left;
     border:1px solid grey;
     padding:10px;
+    padding-bottom:18px;
     border-radius:10px;
 }
 .div_profile button{
@@ -339,4 +341,150 @@ body{
     padding:5px;
     font-weight:bold;
     cursor:pointer; 
+    border-radius:20px;
+}
+.user_activity{
+    width: 47%;
+    float:right;
+    border:1px solid grey;
+    padding:10px;
+    border-radius:10px;
+}
+.user_activity span:first-child{
+    font-weight:bold;
+    text-align:center;
+    display:block;
+    font-size:16px;
+}
+.my_orders_container{
+    background-color:#f2f0e9;
+    width:85%;
+    margin:0 auto;
+    padding:10px;
+}
+.my_orders_container h2{
+    margin-left:20px;
+}
+.process_type_container{
+    width:90%;
+    border-bottom:2px solid grey;
+    margin:0 auto;
+}
+.process_type_container ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f2f0e9;
+  }
+  
+  .process_type_container li {
+    float: left;
+    cursor:pointer;
+  }
+  .list_container{
+      padding:10px;
+      text-align:center;
+      font-size:12px;
+      font-weight:bold;
+  }
+  .list_selected{
+      border-bottom:2px solid grey;
+      border-radius:2px;
+  }
+  .sorting_orders{
+      background-color:#FFFFFF;
+      width:76%;
+      margin:0 auto;
+      padding:10px;
+      overflow:hidden;
+  }
+  .sorting_orders h3{
+      margin:0;
+      float:left;
+      margin-top:10px;
+  }
+  .sorting_orders select{
+      float:left;
+      margin-left:10px;
+      padding:5px;
+      width:120px;
+      height:40px;
+  }
+  .order_item_container{
+    background-color:#FFFFFF;
+    width:76%;
+    margin:0 auto;
+    padding:10px;
+    overflow:hidden;
+    margin-top:10px;    
+  }
+  .store_name{
+      width:200px;
+      padding:10px;
+      text-align:left;
+      float:left;
+      font-weight:bold;
+      letter-spacing:2px;
+  }
+  .type_name{
+      padding:5px;
+      background-color:#f2f0e9;
+      text-align:center;
+      width:100px;
+      border-radius:20px;
+      float:right;
+  }
+  .items_request{
+    background-color:#FFFFFF;
+    width:76%;
+    margin:0 auto;
+    padding:10px;
+    overflow:hidden;
+    margin-top:2px;    
+  }
+
+
+
+
+  /* table css */
+  .table-list{
+      width:100%;
+  }
+.item_info_td{
+    width: 45%;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+}
+.price_info_td{
+    width: 25%;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+    margin-top:-100px;
+}
+.quantity_info_td{
+    width: 25%;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+    margin-top:-100px;
+}
+.item_info_td_container img{
+    width:150px;
+    height:150px;
+    float:left;
+}
+.item_info_td_container p{
+    float:left;
+    font-size:16px;
+    font-weight:bold;
+    margin-left:10px;
+}
+.item_info_td_container span{
+    display:block;
+    float:left;
+    margin-left:10px;   
+    color:#bbbbbb;
 }

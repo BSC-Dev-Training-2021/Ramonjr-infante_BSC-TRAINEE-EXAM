@@ -22,7 +22,7 @@
                     <a href="../index.php   ">Logout</a>
                 </div>
                 </div>
-                <a href="ecom.php"><span class="logo_cart"><i class="fas fa-shopping-cart"></i></span></a>  
+                <a href="checkout.php"><span class="logo_cart"><i class="fas fa-shopping-cart"></i></span></a>  
         </div>
     </div>
     <div class="category_container">

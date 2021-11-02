@@ -17,38 +17,38 @@
                     Ram Infante &#9660;
                 </a>
                 <div class="dropdown-content">
-                    <a href="#">Profile</a>
+                    <a href="profile.php">Profile</a>
                     <a href="ecom.php">Shop</a>
                     <a href="../index.php">Logout</a>
                 </div>
                 </div>
-                <a><span class="logo_cart"><i class="fas fa-shopping-cart"></i></span></a>  
+                <a href="checkout.php"><span class="logo_cart"><i class="fas fa-shopping-cart"></i></span></a>  
         </div>
     </div>
     <div class="profile_container clearfix">
-        <div class="div_profile" style="border-right:2px solid grey;">   
-        <h1 style="text-align:center;">Profile</h1>
+        <div class="div_profile">   
+        <h1>User Profile</h1>
             <img src="../assets/images/default.png"/>
             <div class="user_information">
-                <div class="user_info_holder clearfix">
+                <div class="user_info_holder">
                     <span><strong>Fullname:</strong> Ramon Infante</span><br/><br/>
                     <span><strong>Age:</strong> 39</span><br/><br/>
                     <span><strong>Gender:</strong> Male</span><br/><br/>
                     <span><strong>Cellphone:</strong> 09973314946</span><br/><br/>
                     <span><strong>Landline:</strong> 0412-24-2</span><br/><br/>
-                    <span><strong>Address: </strong>#102 Masagana st. Sindalan City of San Fernando Pampanga</span>
+                    <span><strong>Address: </strong>#102 Masagana st. Sindalan City of San Fernando Pampanga</span><br/><br/>
+                    <button>Edit Profile</button>
                 </div>
-                <!-- <div class="user_info_holder clearfix">
-                    <p style="text-align:center;margin:0;"><strong>Orders 10:</strong></p>
-                    <p style="float:left;"><strong>Completed:</strong >3</p>
-                    <p style="float:right;"><strong>Cancelled:</strong> 4</p>
-                </div> -->
+                <div class="user_activity">
+                    <span>User Activity</span><br/>
+                    <span style=""><strong>Total Request:</strong> 21 items request</span><br/><br/>
+                    <span><strong>Delivered:</strong> 5 items</span><br/><br/>
+                    <span><strong>Pending:</strong> 2 items</span><br/><br/>
+                    <span><strong>Cancelled:</strong> 10 items</span><br/><br/>
+                    <span><strong>Shiped:</strong> 2 items</span><br/><br/>
+                    <span><strong>Voucher:</strong> 350</span><br/><br/>
+                </div>
             </div>
-            <button>Edit Profile</button>
-        </div>
-        <div class="div_resident">
-             <h1 style="text-align:center;">Order Details</h1>
-            
         </div>
     </div>
 </body>
