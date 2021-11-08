@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Exam Ecommerce</title>
-  <link rel="stylesheet" href="../assets/css/customize_style.css">
-  
-</head>
-<body>
+<?php
+    session_start();
+    if(isset($_SESSION['user'])){
+?>
+<?php
+    include("../template/header.php")
+?>
     <div class="navbar_container">
         <div class="navbar_logo">
         <img src="../assets/images/sample_logo.png"/>
@@ -19,7 +18,7 @@
                 <div class="dropdown-content">
                     <a href="profile.php">Profile</a>
                     <a href="ecom.php">Shop</a>
-                    <a href="../index.php">Logout</a>
+                    <a href="logout.php">Logout</a>
                 </div>
                 </div>
                 <a href="checkout.php"><span class="logo_cart"><i class="fas fa-shopping-cart"></i></span></a>  
@@ -94,87 +93,19 @@
                 </tr>
             </table>
         </div>
-        <div class="order_item_container">
-            <div class="store_name">
-            USA Car Shop
-            </div>
-            <div class="type_name">
-                Delivered
-            </div>
-        </div>  
-        <div class="items_request">
-            <table class="table-list">
-                <tr>
-                    <td class='item_info_td'>
-                        <div class="item_info_td_container">
-                            <img src="../assets/images/car_image.jfif" alt="">
-                            <p>Honda Civic 2022</p>
-                            <span>Color: Green, Good Condition</span>
-                        </div>
-                    </td>
-                    <td class='price_info_td'>
-                        <div class="price_info_td_container">
-                            <p>$110,000.00</p>
-                        </div>
-                    </td>
-                    <td class='quantity_info_td'>
-                        <div class="quantity_info_td_container">
-                            <p>Qty: 1</p>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="order_item_container">
-            <div class="store_name">
-            USA Car Shop
-            </div>
-            <div class="type_name">
-                Cancelled
-            </div>
-        </div>  
-        <div class="items_request">
-            <table class="table-list">
-                <tr>
-                    <td class='item_info_td'>
-                        <div class="item_info_td_container">
-                            <img src="../assets/images/car_image.jfif" alt="">
-                            <p>Honda Civic 2022</p>
-                            <span>Color: White, Good Condition</span>
-                        </div>
-                    </td>
-                    <td class='price_info_td'>
-                        <div class="price_info_td_container">
-                            <p>$110,000.00</p>
-                        </div>
-                    </td>
-                    <td class='quantity_info_td'>
-                        <div class="quantity_info_td_container">
-                            <p>Qty: 1</p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class='item_info_td'>
-                        <div class="item_info_td_container">
-                            <img src="../assets/images/car_image.jfif" alt="">
-                            <p>Honda Civic 2022</p>
-                            <span>Color: Blue, Good Condition</span>
-                        </div>
-                    </td>
-                    <td class='price_info_td'>
-                        <div class="price_info_td_container">
-                            <p>$110,000.00</p>
-                        </div>
-                    </td>
-                    <td class='quantity_info_td'>
-                        <div class="quantity_info_td_container">
-                            <p>Qty: 1</p>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
 </body>
 </html>
-<script src="https://kit.fontawesome.com/b65067a8e4.js" crossorigin="anonymous"></script>
+<?php
+    include("../template/footer.php")
+?>
+<script>
+    axios.get('http://localhost/Ramonjr-infante_BSC-TRAINEE-EXAM/phprequests/get_all_orders.php').then(response => {
+        console.log(response.data)
+    });
+</script>
+<?php
+    }
+    else{
+        header("LOCATION: http://localhost/Ramonjr-infante_BSC-TRAINEE-EXAM/");
+    }
+?>

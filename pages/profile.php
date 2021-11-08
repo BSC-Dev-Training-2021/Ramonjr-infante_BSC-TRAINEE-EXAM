@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Exam Ecommerce</title>
-  <link rel="stylesheet" href="../assets/css/customize_style.css">
-  
-</head>
-<body>
+<?php
+    session_start();
+    if(isset($_SESSION['user'])){
+?>
+<?php
+    include("../template/header.php")
+?>
     <div class="navbar_container">
         <div class="navbar_logo">
         <img src="../assets/images/sample_logo.png"/>
@@ -19,7 +18,7 @@
                 <div class="dropdown-content">
                     <a href="profile.php">Profile</a>
                     <a href="ecom.php">Shop</a>
-                    <a href="../index.php">Logout</a>
+                    <a href="logout.php">Logout</a>
                 </div>
                 </div>
                 <a href="checkout.php"><span class="logo_cart"><i class="fas fa-shopping-cart"></i></span></a>  
@@ -53,4 +52,14 @@
     </div>
 </body>
 </html>
-<script src="https://kit.fontawesome.com/b65067a8e4.js" crossorigin="anonymous"></script>
+<?php
+    include("../template/footer.php")
+?>
+
+
+<?php
+    }
+    else{
+        header("LOCATION: http://localhost/Ramonjr-infante_BSC-TRAINEE-EXAM/");
+    }
+?>
