@@ -89,9 +89,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <span aria-hidden="true">&times;</span>
-            </button>
+            <h5 class="modal-title" id="exampleModalLabel">Product Info</h5>
         </div>
         <div class="modal-body">
             <div class="form-group">
@@ -108,8 +106,35 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary"  id="add_product_btn">Save changes</button>
+            <button type="button" class="btn btn-primary"  id="add_product_btn">Save Product</button>
             <button type="button" class="btn btn-secondary" id="close_modal_add_product">Close</button>
+        </div>
+        </div>
+    </div>
+    </div>
+    <div class="modal fade" id="product_edit_modal_mdl">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Product Info</h5>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Product name:</label>
+                <input id="edit_product_name_txt" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Product description:</label>
+                <input id="edit_product_description_txt" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Product price:</label>
+                <input id="edit_product_price_txt" type="number" class="form-control">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary"  id="update_product_btn">Update Product</button>
+            <button type="button" class="btn btn-secondary" id="close_modal_edit_product">Close</button>
         </div>
         </div>
     </div>
@@ -121,12 +146,19 @@
 
 <script>
     $( document ).ready(function() {
+        function print_data(value,status){
+            console.log(value)
+            if(status == "append"){
+                $('#product_list').append('<li> <div class="item_container clearfix"> <div class="item_image"><button class="btn btn-danger btn-sm delete_product" product_id="'+ value.product_id + '">Delete</button> <img src="../assets/images/car_image.jfif" style="width:100%;border-radius:30px;"/> </div> <div class="item_info"> <div class="item_info_holder"> <span>Name</span><br/> <span>'+ value.product_name + '</span> </div><br/> <div class="item_info_holder"> <span>Description</span><br/> <span>'+ value.product_description + '</span> </div><br/> <div class="item_info_holder"> <span>Price</span><br/> <span>$'+ value.product_price + '</span> </div> </div> </div> <div class="item_option"> <button product_id="' + value.product_id +'" class="select_product_btn"><span style="padding-right:10px;" ><i class="fas fa-shopping-cart"></i></span>Add to Cart</button> <button class="btn btn-warning form-control edit_product_btn" product_id="'+value.product_id+'">Edit</button> </div> </li>')
+           }
+           else{
+                $('#product_list').prepend('<li> <div class="item_container clearfix"> <div class="item_image"><button class="btn btn-danger btn-sm delete_product" product_id="'+ value.product_id + '">Delete</button> <img src="../assets/images/car_image.jfif" style="width:100%;border-radius:30px;"/> </div> <div class="item_info"> <div class="item_info_holder"> <span>Name</span><br/> <span>'+ value.product_name + '</span> </div><br/> <div class="item_info_holder"> <span>Description</span><br/> <span>'+ value.product_description + '</span> </div><br/> <div class="item_info_holder"> <span>Price</span><br/> <span>$'+ value.product_price + '</span> </div> </div> </div> <div class="item_option"> <button product_id="' + value.product_id +'" class="select_product_btn"><span style="padding-right:10px;" ><i class="fas fa-shopping-cart"></i></span>Add to Cart</button> <button class="btn btn-warning form-control edit_product_btn" product_id="'+value.product_id+'">Edit</button> </div> </li>')
+           }
+        };
         axios.get('http://localhost/Ramonjr-infante_BSC-TRAINEE-EXAM/phprequests/select_all_products.php').then(response => {
             console.log(response.data)
             $.each(response.data, function(index, value){
-                console.log(value)
-                $('#product_list').append('<li> <div class="item_container clearfix"> <div class="item_image"><button class="btn btn-danger btn-sm delete_product" product_id="'+ value.product_id + '">Delete</button> <img src="../assets/images/car_image.jfif" style="width:100%;border-radius:30px;"/> </div> <div class="item_info"> <div class="item_info_holder"> <span>Name</span><br/> <span>'+ value.product_name + '</span> </div><br/> <div class="item_info_holder"> <span>Description</span><br/> <span>'+ value.product_description + '</span> </div><br/> <div class="item_info_holder"> <span>Price</span><br/> <span>'+ value.product_price + '</span> </div> </div> </div> <div class="item_option"> <button product_id="' + value.product_id +'" class="select_product_btn"><span style="padding-right:10px;" ><i class="fas fa-shopping-cart"></i></span>Add to Cart</button> <button class="btn btn-warning form-control">Edit</button> </div> </li>')
-                
+                print_data(value,"append");
             });
         });
 
@@ -161,10 +193,8 @@
                 product_price_txt:$('#product_price_txt').val(),
 			}
 			axios.post('http://localhost/Ramonjr-infante_BSC-TRAINEE-EXAM/phprequests/add_product_request.php',data).then(response => {
-				console.log(response.data)
-                
-                $('#product_list').prepend('<li> <div class="item_container clearfix"> <div class="item_image"><button class="btn btn-danger btn-sm delete_product" product_id="'+ response.data[0].product_id + '">Delete</button> <img src="../assets/images/car_image.jfif" style="width:100%;border-radius:30px;"/> </div> <div class="item_info"> <div class="item_info_holder"> <span>Name</span><br/> <span>'+ response.data[0].product_name + '</span> </div><br/> <div class="item_info_holder"> <span>Description</span><br/> <span>'+ response.data[0].product_description + '</span> </div><br/> <div class="item_info_holder"> <span>Price</span><br/> <span>'+ response.data[0].product_price + '</span> </div> </div> </div> <div class="item_option"> <button  product_id="' + response.data.product_id +'" class="select_product_btn"><span style="padding-right:10px;" ><i class="fas fa-shopping-cart"></i></span>Add to Cart</button> <button class="btn btn-warning form-control">Edit</button> </div> </li>')
-                
+				
+                print_data(response.data[0],"prepend");
                 toastr.success('Product added');
                 $('#product_modal_mdl').modal("hide")
         	});
@@ -186,18 +216,58 @@
             axios.post('http://localhost/Ramonjr-infante_BSC-TRAINEE-EXAM/phprequests/delete_product_request.php',data).then(response => {
                 console.log(response.data)
                 toastr.success('Product Deleted');
-                        $('#product_list').html("");
-                axios.get('http://localhost/Ramonjr-infante_BSC-TRAINEE-EXAM/phprequests/select_all_products.php').then(response => {
-                    console.log(response.data)
-                    $.each(response.data, function(index, value){
-                        console.log(value)
-                        $('#product_list').append('<li> <div class="item_container clearfix"> <div class="item_image"><button class="btn btn-danger btn-sm delete_product" product_id="'+ value.product_id + '">Delete</button> <img src="../assets/images/car_image.jfif" style="width:100%;border-radius:30px;"/> </div> <div class="item_info"> <div class="item_info_holder"> <span>Name</span><br/> <span>'+ value.product_name + '</span> </div><br/> <div class="item_info_holder"> <span>Description</span><br/> <span>'+ value.product_description + '</span> </div><br/> <div class="item_info_holder"> <span>Price</span><br/> <span>'+ value.product_price + '</span> </div> </div> </div> <div class="item_option"> <button product_id="' + value.product_id +'" class="select_product_btn"><span style="padding-right:10px;" ><i class="fas fa-shopping-cart"></i></span>Add to Cart</button> <button class="btn btn-warning form-control">Edit</button> </div> </li>')
-                        
-                    });
+                $('#product_list').html("");
+                $.each(response.data, function(index, value){
+                    print_data(value,"append");
                 });
             });
         });
-        
+        $(document).on("click",".edit_product_btn",function(){
+            let data = {
+                product_id:$(this).attr("product_id")
+            }
+            axios.post('http://localhost/Ramonjr-infante_BSC-TRAINEE-EXAM/phprequests/get_single_product.php',data).then(response => {
+                console.log(response.data)
+                $('#product_edit_modal_mdl').modal("show");
+                $('#update_product_btn').attr("product_id",response.data[0].product_id)
+                $('#edit_product_name_txt').val(response.data[0].product_name)
+                $('#edit_product_description_txt').val(response.data[0].product_description)
+                $('#edit_product_price_txt').val(response.data[0].product_price)
+            });
+        });
+        $(document).on("click","#close_modal_edit_product",function(){
+            $('#product_edit_modal_mdl').modal("hide");
+        })
+        $(document).on("click","#update_product_btn",function(){
+            if($('#edit_product_name_txt').val() == ""){
+                toastr.warning('Product name is empty');
+                return;
+            }
+            if($('#edit_product_description_txt').val() == ""){
+                toastr.warning('Product description is empty');
+                return;
+            }
+            if($('#edit_product_price_txt').val() == ""){
+                toastr.warning('Product price is empty');
+                return;
+            }
+            let data = {
+                product_id:$(this).attr("product_id"),
+                edit_product_name_txt:$('#edit_product_name_txt').val(),
+                edit_product_description_txt:$('#edit_product_description_txt').val(),
+                edit_product_price_txt:$('#edit_product_price_txt').val(),
+            }
+            console.log(data)
+            axios.post('http://localhost/Ramonjr-infante_BSC-TRAINEE-EXAM/phprequests/update_single_product.php',data).then(response => {
+                console.log(response.data)
+                toastr.success('Product Updated');
+                $('#product_list').html("");
+                $.each(response.data, function(index, value){
+                    print_data(value,"append");
+                });
+                $('#product_edit_modal_mdl').modal('hide')
+            });
+        })
     });
 </script>
 
